@@ -6,13 +6,13 @@
 
 ## ✨ 功能特性
 
-### 🔧 TDD 工作流工具（15个工具）
+### 🔧 TDD 工作流工具（6个核心工具）
 **核心TDD工具：**
-- `generate_test_cases` - 根据需求生成全面的测试用例
+- `generate_test_cases` - 根据需求生成全面的测试用例（支持 TypeScript/JavaScript、Python、Java、C#）
 - `implement_from_tests` - 根据测试生成最小化实现代码  
-- `run_tests` - 执行测试并返回详细结果
+- `run_tests` - 执行测试并返回详细结果（支持 Jest、Pytest、JUnit5、xUnit 等）
 - `analyze_coverage` - 分析代码覆盖率并生成报告
-- `refactor_code` - 提供代码重构建议
+- `refactor_code` - 提供代码重构建议（专注于可读性、性能、安全性）
 - `validate_tdd_cycle` - 验证TDD红绿重构循环遵循情况
 
 **功能管理工具：**
@@ -40,12 +40,38 @@
 
 | 编程语言 | 测试框架 | 状态 |
 |----------|---------|------|
-| **TypeScript/JavaScript** | Jest, Mocha, Vitest, Jasmine | ✅ 完全支持 |
-| **Python** | pytest, unittest, nose2 | ✅ 完全支持 |  
-| **Java** | JUnit 5, TestNG, Spock | ✅ 完全支持 |
-| **C#** | xUnit, NUnit, MSTest | ✅ 完全支持 |
-| **Go** | 内置测试, Testify, Ginkgo | ✅ 完全支持 |
-| **Rust** | Cargo test, proptest | ✅ 完全支持 |
+| **TypeScript/JavaScript** | Jest, Mocha, Vitest | ✅ 完全支持 |
+| **Python** | pytest, unittest | ✅ 完全支持 |  
+| **Java** | JUnit 5 | ✅ 完全支持 |
+| **C#** | xUnit, NUnit | ✅ 完全支持 |
+| **Go** | Go Test | ✅ 完全支持 |
+| **Rust** | Cargo test | ✅ 完全支持 |
+| **PHP** | PHPUnit | ✅ 完全支持 |
+
+### 📊 项目测试状态
+
+**当前测试覆盖率：** 91+ 个测试用例 ✅
+- **TestGeneratorService**: 全面覆盖 - 生成测试用例、解析需求、支持多语言框架
+- **CodeGeneratorService**: 全面覆盖 - 从测试生成实现代码、方法提取、语言特定代码生成
+- **CoverageAnalyzerService**: 全面覆盖 - 解析覆盖率报告、支持多框架格式
+- **TestRunnerService**: 全面覆盖 - 执行测试、解析结果、错误处理
+- **FeatureManagementService**: 全面覆盖 - 功能管理、相似性搜索、文件关联
+- **StorageService**: 基础测试覆盖 - 数据持久化、JSONL格式
+
+### 🔄 最近优化改进
+
+**TDD方法论优化：**
+- ✅ **测试优先开发**: 所有新功能都遵循严格的TDD Red-Green-Refactor循环
+- ✅ **代码重构**: 使用TDD MCP工具对现有代码进行重构优化
+- ✅ **测试覆盖率提升**: 新增30+个测试用例，覆盖关键业务逻辑
+- ✅ **框架兼容性**: 修复并优化多框架支持（Jest、JUnit5、pytest等）
+- ✅ **类型安全**: 增强TypeScript类型定义和模块解析
+
+**代码质量提升：**
+- 🔧 **服务层重构**: 优化TestGeneratorService, CodeGeneratorService等核心服务
+- 🔧 **错误处理**: 增强异常处理和错误恢复机制
+- 🔧 **配置优化**: 修复Jest配置问题，改进模块名映射
+- 🔧 **性能优化**: 优化测试执行时间和内存使用
 
 ## 🚀 快速开始
 

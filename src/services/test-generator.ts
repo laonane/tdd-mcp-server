@@ -462,11 +462,18 @@ public void ${testName}()
   }
 
   private isFrameworkSupported(language: SupportedLanguage, framework: string): boolean {
-    // Check if the framework is supported for the given language
-    const supportedFrameworks = Object.values(SUPPORTED_FRAMEWORKS);
-    return supportedFrameworks.some(f => 
-      f.language === language && f.name.toLowerCase() === framework.toLowerCase()
-    );
+    // Check if the framework is supported for the given language by key or name
+    const frameworks = SUPPORTED_FRAMEWORKS as Record<string, any>;
+    
+    for (const [key, config] of Object.entries(frameworks)) {
+      if ((key.toLowerCase() === framework.toLowerCase() || 
+           config.name.toLowerCase() === framework.toLowerCase()) &&
+          config.language === language) {
+        return true;
+      }
+    }
+    
+    return false;
   }
 
   private estimateCoverage(tests: GeneratedTest[]): number {
