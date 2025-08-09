@@ -566,8 +566,8 @@ MIT License - 详见 [LICENSE](LICENSE) 文件。
 
 ## 🆘 获取支持
 
-- 🐛 **Bug报告**: [Gitee Issues](https://gitee.com/laonayan/tdd-mcp-server/issues)
-- 💬 **讨论交流**: [Gitee Discussions](https://gitee.com/laonayan/tdd-mcp-server/issues)
+- 🐛 **Bug报告**: [Github Issues](https://github.com/laonane/tdd-mcp-server/issues)
+- 💬 **讨论交流**: [Github Discussions](https://github.com/laonane/tdd-mcp-server/issues)
 
 ---
 
