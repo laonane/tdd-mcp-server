@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { StorageService } from './storage.service';
+import { StorageService } from './storage.service.js';
 import { 
   Feature, 
   FeatureStatus, 
@@ -8,7 +8,7 @@ import {
   CreateFeatureParams,
   UpdateFeatureStatusParams,
   LinkFeatureFilesParams
-} from '../types/storage';
+} from '../types/storage.js';
 
 export interface SimilarFeature {
   feature: Feature;

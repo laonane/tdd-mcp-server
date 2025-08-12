@@ -1,5 +1,5 @@
-import { TestGeneratorService } from '../test-generator';
-import { SupportedLanguage, TestType } from '../../types/tdd';
+import { TestGeneratorService } from '../test-generator.js';
+import { SupportedLanguage, TestType } from '../../types/tdd.js';
 
 describe('TestGeneratorService', () => {
   let testGenerator: TestGeneratorService;
@@ -54,7 +54,7 @@ describe('TestGeneratorService', () => {
       const result = await testGenerator.generateTests(params);
 
       expect(result.language).toBe(SupportedLanguage.JAVA);
-      expect(result.framework).toBe('junit');
+      expect(result.framework).toBe('junit5');
       expect(result.tests[0].imports).toContain('import org.junit.jupiter.api.Test;');
     });
 

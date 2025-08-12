@@ -1,5 +1,5 @@
-import { CodeGeneratorService } from '../code-generator';
-import { SupportedLanguage } from '../../types/tdd';
+import { CodeGeneratorService } from '../code-generator.js';
+import { SupportedLanguage } from '../../types/tdd.js';
 
 describe('CodeGeneratorService', () => {
   let codeGenerator: CodeGeneratorService;

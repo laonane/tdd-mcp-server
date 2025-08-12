@@ -172,3 +172,5 @@ claude-code-workspace-*
 # MCP debugging files
 mcp-debug-*
 mcp-trace-*
+/CLAUDE.md
+/design-new-tools.md

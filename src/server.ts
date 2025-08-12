@@ -13,6 +13,8 @@ import {
 import { toolsHandler } from './handlers/tools.js';
 import { resourcesHandler } from './handlers/resources.js';
 import { promptsHandler } from './handlers/prompts.js';
+import { NewToolsHandler } from './handlers/new-tools.js';
+import { I18nService } from './i18n.js';
 
 // Server information
 const SERVER_INFO = {
@@ -23,6 +25,17 @@ const SERVER_INFO = {
   license: 'MIT',
 };
 
+// Initialize services
+const i18nService = I18nService.getInstance();
+const useNewTools = process.env.USE_NEW_TOOLS === 'true';
+const defaultLocale = (process.env.DEFAULT_LOCALE as 'zh' | 'en') || 'zh'; // 默认中文
+
+// Set default locale
+i18nService.setLocale(defaultLocale);
+
+// Initialize tool handlers
+const newToolsHandler = new NewToolsHandler(i18nService);
+
 // Create server instance
 const server = new Server(SERVER_INFO, {
   capabilities: {
@@ -32,9 +45,16 @@ const server = new Server(SERVER_INFO, {
   },
 });
 
-// Tool handlers
-server.setRequestHandler(ListToolsRequestSchema, toolsHandler.listTools);
-server.setRequestHandler(CallToolRequestSchema, toolsHandler.callTool);
+// Choose tool handlers based on environment
+if (useNewTools) {
+  console.error('Using new simplified tools (3 tools with subcommands)');
+  server.setRequestHandler(ListToolsRequestSchema, newToolsHandler.listTools.bind(newToolsHandler));
+  server.setRequestHandler(CallToolRequestSchema, newToolsHandler.callTool.bind(newToolsHandler));
+} else {
+  console.error('Using legacy tools (15 individual tools)');
+  server.setRequestHandler(ListToolsRequestSchema, toolsHandler.listTools);
+  server.setRequestHandler(CallToolRequestSchema, toolsHandler.callTool);
+}
 
 // Resource handlers
 server.setRequestHandler(ListResourcesRequestSchema, resourcesHandler.listResources);

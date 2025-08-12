@@ -1,5 +1,5 @@
-import { FeatureManagementService } from '../feature-management.service';
-import { StorageService } from '../storage.service';
+import { FeatureManagementService } from '../feature-management.service.js';
+import { StorageService } from '../storage.service.js';
 import { 
   Feature, 
   FeatureStatus, 
@@ -7,7 +7,7 @@ import {
   CreateFeatureParams,
   UpdateFeatureStatusParams,
   LinkFeatureFilesParams
-} from '../../types/storage';
+} from '../../types/storage.js';
 
 // Mock StorageService
 jest.mock('../storage.service');

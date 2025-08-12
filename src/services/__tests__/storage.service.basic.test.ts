@@ -1,5 +1,5 @@
-import { StorageService } from '../storage.service';
-import { Feature, FeatureStatus, FeaturePriority } from '../../types/storage';
+import { StorageService } from '../storage.service.js';
+import { Feature, FeatureStatus, FeaturePriority } from '../../types/storage.js';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as os from 'os';
@@ -20,7 +20,7 @@ describe('StorageService - Basic Tests', () => {
     // Setup default mocks
     mockFs.ensureDir.mockResolvedValue(undefined);
     mockFs.pathExists.mockResolvedValue(false);
-    mockFs.appendFile.mockResolvedValue(undefined);
+    mockFs.outputFile.mockResolvedValue(undefined);
     mockFs.writeFile.mockResolvedValue(undefined);
     mockFs.readdir.mockResolvedValue([]);
   });
@@ -45,7 +45,7 @@ describe('StorageService - Basic Tests', () => {
 
       // Assert
       expect(mockFs.ensureDir).toHaveBeenCalled();
-      expect(mockFs.appendFile).toHaveBeenCalled();
+      expect(mockFs.outputFile).toHaveBeenCalled();
     });
 
     it('should reject invalid feature data', async () => {

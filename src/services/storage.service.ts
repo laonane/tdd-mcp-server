@@ -1,4 +1,4 @@
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import * as path from 'path';
 import * as os from 'os';
 import { 
@@ -14,7 +14,7 @@ import {
   TDDSessionSchema,
   TestMethodSchema,
   FileAssociationSchema
-} from '../types/storage';
+} from '../types/storage.js';
 
 export class StorageService implements IStorageService {
   private readonly baseStoragePath: string;
@@ -98,7 +98,7 @@ export class StorageService implements IStorageService {
 
   private async appendToJsonlFile<T>(filePath: string, item: T): Promise<void> {
     const jsonLine = JSON.stringify(item) + '\n';
-    await fs.appendFile(filePath, jsonLine);
+    await fs.outputFile(filePath, jsonLine, { flag: 'a' });
   }
 
   private validateFeature(feature: any): void {
